@@ -29,8 +29,9 @@ url: "https://4lg4m3r.github.io/" # the base hostname & protocol for your site, 
 github_username:  4Lg4m3r
 
 # Build settings
-remote_theme: daattali/beautiful-jekyll@6.0.1
+remote_theme: mmistakes/minimal-mistakes@4.28.1
 plugins:
+  - jekyll-include-cache 
   - jekyll-remote-theme
   - jekyll-feed
 
