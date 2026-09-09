@@ -1,0 +1,26 @@
+# Use an official Ruby runtime as a parent image
+FROM ruby:3.2.2-bookworm
+
+# Install Node.js for some js dependencies
+RUN apt-get update -qq && apt-get install -y nodejs
+
+# Install Jekyll and Bundler
+RUN gem install bundler jekyll
+
+# Set the working directory in the image to /app
+WORKDIR /app
+
+# Add the current directory (inside jekyll site folder) contents into the container at /app
+ADD . /app
+
+# Install any needed packages specified in Gemfile
+RUN bundle install
+
+# Make port 4000 available outside this container
+EXPOSE 4000
+
+#optionnal:
+ENV NAME World
+
+# Run Jekyll when the container launches
+CMD ["bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0"]
